@@ -1,87 +1,71 @@
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+import catalog from "../catalog.json" assert { type: "json" };
 
-async function loadProducts() {
-  const res = await fetch("products/manifest.json");
-  const products = await res.json();
-  renderProducts(products);
-}
+const gallery = document.getElementById("gallery");
+const cartBtn = document.getElementById("cartBtn");
+const cartModal = document.getElementById("cartModal");
+const closeCart = document.getElementById("closeCart");
+const cartItems = document.getElementById("cartItems");
+const cartSummary = document.getElementById("cartSummary");
+const clearCart = document.getElementById("clearCart");
+const checkoutBtn = document.getElementById("checkoutBtn");
+const cartCount = document.getElementById("cartCount");
 
-function renderProducts(products) {
-  const gallery = document.getElementById("gallery");
+const contactBtn = document.getElementById("contactBtn");
+const contactModal = document.getElementById("contactModal");
+const closeContact = document.getElementById("closeContact");
+const contactWhatsapp = document.getElementById("contactWhatsapp");
+
+let cart = {};
+
+function renderCatalog() {
   gallery.innerHTML = "";
-
-  products.forEach(p => {
+  catalog.forEach((item, index) => {
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
-      <img src="products/${p.path}" alt="${p.name}" />
-      <div class="name">${p.name.replace(/\.[^/.]+$/, "")}</div>
-      <button onclick="addToCart('${p.name}')">Agregar</button>
+      <img src="${item.image}" alt="${item.name}" />
+      <h3>${item.name}</h3>
+      <p>$${item.price}</p>
+      <button onclick="addToCart(${index})">Agregar</button>
     `;
     gallery.appendChild(card);
   });
 }
 
-function addToCart(name) {
-  cart.push(name);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  updateCartCount();
+window.addToCart = function(index) {
+  const item = catalog[index];
+  cart[item.name] = (cart[item.name] || 0) + 1;
+  updateCart();
+};
+
+function updateCart() {
+  cartItems.innerHTML = "";
+  let total = 0;
+  Object.entries(cart).forEach(([name, qty]) => {
+    const item = catalog.find(i => i.name === name);
+    const subtotal = item.price * qty;
+    total += subtotal;
+    const div = document.createElement("div");
+    div.textContent = `${name} x${qty} - $${subtotal}`;
+    cartItems.appendChild(div);
+  });
+  cartSummary.textContent = `Total: $${total}`;
+  cartCount.textContent = Object.values(cart).reduce((a,b)=>a+b,0);
 }
 
-function updateCartCount() {
-  document.getElementById("cartCount").textContent = cart.length;
-}
+cartBtn.onclick = () => cartModal.classList.remove("hidden");
+closeCart.onclick = () => cartModal.classList.add("hidden");
+clearCart.onclick = () => { cart = {}; updateCart(); };
+checkoutBtn.onclick = () => {
+  let msg = "Hola! Quiero pedir:\n";
+  Object.entries(cart).forEach(([name, qty]) => msg += `${name} x${qty}\n`);
+  window.open(`https://wa.me/5491112345678?text=${encodeURIComponent(msg)}`);
+};
 
-function showCart() {
-  const modal = document.getElementById("cartModal");
-  modal.classList.remove("hidden");
+contactBtn.onclick = () => contactModal.classList.remove("hidden");
+closeContact.onclick = () => contactModal.classList.add("hidden");
+contactWhatsapp.onclick = () => {
+  window.open("https://wa.me/5491112345678?text=Hola, vengo a consultarte:");
+};
 
-  const itemsDiv = document.getElementById("cartItems");
-  itemsDiv.innerHTML = cart.map(item => `<p>${item.replace(/\.[^/.]+$/, "")}</p>`).join("");
-  document.getElementById("cartSummary").textContent = `Total: ${cart.length} waffles`;
-}
-
-function closeCart() {
-  document.getElementById("cartModal").classList.add("hidden");
-}
-
-function clearCart() {
-  cart = [];
-  localStorage.setItem("cart", JSON.stringify(cart));
-  updateCartCount();
-  showCart();
-}
-
-function checkout() {
-  const number = "5491112345678"; // ← ponés tu número real
-  const text = encodeURIComponent("Hola, quiero pedir:\n" + cart.join(", "));
-  window.open(`https://wa.me/${number}?text=${text}`, "_blank");
-}
-
-function showContact() {
-  document.getElementById("contactModal").classList.remove("hidden");
-}
-
-function closeContact() {
-  document.getElementById("contactModal").classList.add("hidden");
-}
-
-function contactWhatsApp() {
-  const number = "5491112345678";
-  const text = encodeURIComponent("Hola, vengo para consultarte: ");
-  window.open(`https://wa.me/${number}?text=${text}`, "_blank");
-}
-
-// Eventos
-document.getElementById("cartBtn").onclick = showCart;
-document.getElementById("closeCart").onclick = closeCart;
-document.getElementById("clearCart").onclick = clearCart;
-document.getElementById("checkoutBtn").onclick = checkout;
-
-document.getElementById("contactBtn").onclick = showContact;
-document.getElementById("closeContact").onclick = closeContact;
-document.getElementById("contactWhatsApp").onclick = contactWhatsApp;
-
-loadProducts();
-updateCartCount();
-
+renderCatalog();

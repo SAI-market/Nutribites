@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Nutri Bites - Waffles Dietéticos</title>
+  <title>Nutri Bites - Catálogo</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
   <header class="topbar">
     <div class="brand">
-      <img src="img/logo.png" alt="Nutri Bites" class="logo" />
+      <img src="images/logo.png" alt="Nutri Bites" class="logo" />
       <div class="title">Nutri Bites</div>
     </div>
     <div class="controls">
@@ -20,44 +20,37 @@
   </header>
 
   <main>
-    <section class="filters">
-      <div id="categoriesContainer" class="categories-container"></div>
-      <label style="margin-left:auto;">
-        <input id="onlySelected" type="checkbox" /> Mostrar solo seleccionados
-      </label>
-    </section>
-
     <section id="gallery" class="gallery"></section>
   </main>
 
-  <!-- Modal Carrito -->
-  <div id="cartModal" class="modal hidden">
-    <div class="modal-content">
-      <button class="close-btn" id="closeCart">X</button>
+  <!-- Modal carrito -->
+  <div id="cartModal" class="cart-modal hidden" aria-hidden="true">
+    <div class="cart-content">
+      <button id="closeCart" class="close-btn">X</button>
       <h2>Tu carrito</h2>
-      <div id="cartItems"></div>
+      <div id="cartItems" class="cart-items"></div>
       <div class="cart-actions">
-        <div id="cartSummary"></div>
+        <div id="cartSummary" class="cart-summary"></div>
         <div class="cart-buttons">
           <button id="clearCart">Vaciar</button>
-          <button id="checkoutBtn" class="primary">Pagar por WhatsApp</button>
+          <button id="checkoutBtn" class="primary">Pedir por WhatsApp</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Modal Contacto -->
-  <div id="contactModal" class="modal hidden">
-    <div class="modal-content">
-      <button class="close-btn" id="closeContact">X</button>
+  <!-- Modal contacto -->
+  <div id="contactModal" class="cart-modal hidden" aria-hidden="true">
+    <div class="cart-content">
+      <button id="closeContact" class="close-btn">X</button>
       <h2>Contacto</h2>
-      <p>¿Tenés dudas o querés un pedido especial? Hablame directo por WhatsApp:</p>
-      <button id="contactWhatsApp" class="primary">Escribir por WhatsApp</button>
+      <p>Hola 👋, si querés consultarnos algo escribinos por WhatsApp.</p>
+      <button id="contactWhatsapp" class="primary">Abrir WhatsApp</button>
     </div>
   </div>
 
   <footer class="footer">
-    <small>Nutri Bites • Waffles Dietéticos • Contacto por WhatsApp</small>
+    <small>Nutri Bites • Waffles Dietéticos</small>
   </footer>
 
   <script src="js/app.js" type="module"></script>

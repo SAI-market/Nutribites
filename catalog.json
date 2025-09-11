@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Waffle Chocolate",
+    "price": 1500,
+    "image": "./images/waffles/Waffle_Chocolate.jpg"
+  },
+  {
+    "name": "Waffle Dulce",
+    "price": 1500,
+    "image": "./images/waffles/Waffle_Dulce.jpg"
+  },
+  {
+    "name": "Waffle frutilla",
+    "price": 1500,
+    "image": "./images/waffles/Waffle_frutilla.jpg"
+  }
+]

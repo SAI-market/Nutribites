@@ -1,135 +1,87 @@
-:root {
-  --violet: #722D72;
-  --orange: #F28C28;
-  --light: #fdfdfd;
-  --gray: #f2f2f2;
-}
-
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  background: var(--gray);
-  color: #333;
+  background: #fff9f0;
+  color: #4b2354;
 }
 
 .topbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 20px;
-  background: var(--violet);
-  color: var(--light);
+  background: #f8d37d;
+  padding: 10px 20px;
 }
 
-.brand {
+.topbar .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
 }
-.brand .logo {
-  width: 50px;
-  height: auto;
+
+.topbar .logo {
+  height: 40px;
+  margin-right: 10px;
 }
-.title {
+
+.topbar .title {
   font-size: 1.5em;
   font-weight: bold;
 }
 
 .controls input {
-  padding: 6px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  padding: 5px;
 }
-.controls button {
-  margin-left: 8px;
+
+button {
+  margin-left: 10px;
   padding: 6px 12px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  background: var(--orange);
-  color: white;
-  font-weight: bold;
-}
-.controls button:hover {
-  background: #d97820;
 }
 
-.filters {
-  display: flex;
-  align-items: center;
-  padding: 12px;
+button.primary {
+  background: #8a2c7d;
+  color: #fff;
 }
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 15px;
   padding: 20px;
 }
 
 .card {
-  background: var(--light);
+  background: white;
   border-radius: 10px;
-  padding: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 10px;
   text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+
 .card img {
   max-width: 100%;
   border-radius: 8px;
-  cursor: pointer;
-}
-.card .name {
-  margin: 8px 0;
-  font-weight: bold;
-  color: var(--violet);
-}
-.card button {
-  background: var(--orange);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 6px 10px;
-  cursor: pointer;
-}
-.card button:hover {
-  background: #d97820;
 }
 
-.modal {
+.cart-modal {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.modal.hidden { display: none; }
 
-.modal-content {
-  background: var(--light);
-  padding: 20px;
+.cart-content {
+  background: white;
   border-radius: 10px;
+  padding: 20px;
   width: 90%;
   max-width: 400px;
-  position: relative;
-}
-.close-btn {
-  position: absolute;
-  top: 10px; right: 10px;
-  border: none;
-  background: var(--violet);
-  color: white;
-  border-radius: 50%;
-  cursor: pointer;
-  padding: 4px 8px;
 }
 
-.footer {
-  text-align: center;
-  padding: 12px;
-  background: var(--violet);
-  color: white;
+.hidden {
+  display: none;
 }
-
