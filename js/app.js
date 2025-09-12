@@ -1,71 +1,38 @@
-import catalog from "../catalog.json" assert { type: "json" };
+// Cargar el catálogo
+fetch("catalog.json")
+  .then(res => res.json())
+  .then(data => {
+    const container = document.querySelector("#catalog");
+    const searchInput = document.querySelector("#searchInput");
 
-const gallery = document.getElementById("gallery");
-const cartBtn = document.getElementById("cartBtn");
-const cartModal = document.getElementById("cartModal");
-const closeCart = document.getElementById("closeCart");
-const cartItems = document.getElementById("cartItems");
-const cartSummary = document.getElementById("cartSummary");
-const clearCart = document.getElementById("clearCart");
-const checkoutBtn = document.getElementById("checkoutBtn");
-const cartCount = document.getElementById("cartCount");
+    function renderCatalog(filter = "") {
+      container.innerHTML = "";
+      const filtered = data.filter(item =>
+        item.name.toLowerCase().includes(filter.toLowerCase())
+      );
+      filtered.forEach(item => {
+        const card = document.createElement("div");
+        card.classList.add("waffle-card");
+        card.innerHTML = `
+          <img src="${item.image}" alt="${item.name}">
+          <h3>${item.name}</h3>
+          <p>$${item.price}</p>
+        `;
+        container.appendChild(card);
+      });
+    }
 
-const contactBtn = document.getElementById("contactBtn");
-const contactModal = document.getElementById("contactModal");
-const closeContact = document.getElementById("closeContact");
-const contactWhatsapp = document.getElementById("contactWhatsapp");
+    renderCatalog();
 
-let cart = {};
+    // Buscar en vivo
+    searchInput.addEventListener("input", (e) => {
+      renderCatalog(e.target.value);
+    });
+  })
+  .catch(err => console.error("Error cargando catálogo:", err));
 
-function renderCatalog() {
-  gallery.innerHTML = "";
-  catalog.forEach((item, index) => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <img src="${item.image}" alt="${item.name}" />
-      <h3>${item.name}</h3>
-      <p>$${item.price}</p>
-      <button onclick="addToCart(${index})">Agregar</button>
-    `;
-    gallery.appendChild(card);
-  });
-}
-
-window.addToCart = function(index) {
-  const item = catalog[index];
-  cart[item.name] = (cart[item.name] || 0) + 1;
-  updateCart();
-};
-
-function updateCart() {
-  cartItems.innerHTML = "";
-  let total = 0;
-  Object.entries(cart).forEach(([name, qty]) => {
-    const item = catalog.find(i => i.name === name);
-    const subtotal = item.price * qty;
-    total += subtotal;
-    const div = document.createElement("div");
-    div.textContent = `${name} x${qty} - $${subtotal}`;
-    cartItems.appendChild(div);
-  });
-  cartSummary.textContent = `Total: $${total}`;
-  cartCount.textContent = Object.values(cart).reduce((a,b)=>a+b,0);
-}
-
-cartBtn.onclick = () => cartModal.classList.remove("hidden");
-closeCart.onclick = () => cartModal.classList.add("hidden");
-clearCart.onclick = () => { cart = {}; updateCart(); };
-checkoutBtn.onclick = () => {
-  let msg = "Hola! Quiero pedir:\n";
-  Object.entries(cart).forEach(([name, qty]) => msg += `${name} x${qty}\n`);
-  window.open(`https://wa.me/5491112345678?text=${encodeURIComponent(msg)}`);
-};
-
-contactBtn.onclick = () => contactModal.classList.remove("hidden");
-closeContact.onclick = () => contactModal.classList.add("hidden");
-contactWhatsapp.onclick = () => {
-  window.open("https://wa.me/5491112345678?text=Hola, vengo a consultarte:");
-};
-
-renderCatalog();
+// Botón de contacto por WhatsApp
+document.querySelector("#contactBtn").addEventListener("click", () => {
+  const mensaje = encodeURIComponent("Hola! Vengo para consultarte sobre los waffles 😊");
+  window.open(`https://wa.me/5491122334455?text=${mensaje}`, "_blank");
+});
