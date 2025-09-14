@@ -19,6 +19,7 @@ body {
   align-items: center;
   padding: 8px 16px;
   transition: padding 0.3s ease;
+  box-sizing: border-box;
 }
 
 .logo-wrapper {
@@ -28,7 +29,7 @@ body {
 }
 
 .logo {
-  height: 100px;
+  height: 140px;
   transition: height 0.3s ease;
 }
 
@@ -60,12 +61,59 @@ body {
   border: none;
   cursor: pointer;
   font-size: 0.9rem;
+  white-space: nowrap;
 }
 .menu a:hover, .menu button:hover {
   background: #3b003b;
   color: white;
 }
 
+/* --- ESTADO SCROLLED --- */
+.topbar.scrolled {
+  flex-direction: row;          
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px; 
+}
+
+.topbar.scrolled .logo-wrapper {
+  justify-content: flex-start;  
+  flex-shrink: 0;
+}
+
+.topbar.scrolled .logo {
+  height: 90px;                 
+}
+
+.topbar.scrolled .menu {
+  margin-top: 0;
+  display: flex;
+  flex-wrap: nowrap; 
+  overflow-x: auto; 
+  max-width: 70%; 
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+  
+}
+
+/* Oculta scrollbar en Chrome, Safari y Opera */
+.topbar.scrolled .menu::-webkit-scrollbar {
+  display: none;
+}
+
+.topbar.scrolled .menu a, 
+.topbar.scrolled .menu button {
+  padding: 5px 8px; 
+  font-size: 0.85rem; /* Reduce ligeramente el tamaño de fuente */
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+  margin: 2px; /* Reduce el margen entre elementos */
+}
+
+.menu button {
+  max-width: 140px; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
 
 /* HERO */
 .hero {
@@ -76,7 +124,7 @@ body {
   align-items: center;
   text-align: center;
   color: wheat;
-  margin-top: 60px;
+  margin-top: 140px; /* Aumentado para compensar la barra superior */
 }
 .hero-content {
   background: rgba(0,0,0,0.5);
@@ -147,7 +195,7 @@ body {
 
 /* FOOTER */
 .footer {
-  background: #3b003b;
+  background: #7b2e7b;
   color: white;
   text-align: center;
   padding: 20px;
@@ -155,10 +203,13 @@ body {
 .footer .redes a {
   color: white;
   margin: 0 10px;
+
+  padding: 6px 12px;
+  border-radius: 6px;
   text-decoration: none;
 }
 .footer .redes a:hover {
-  text-decoration: underline;
+  background: #3b003b;
 }
 
 /* MODALES */
@@ -197,7 +248,7 @@ body {
 .btn-whatsapp {
   background: #25d366;
   color: white;
-  padding: 12px 24px;
+  padding: 6px 12px;
   border-radius: 6px;
   border: none;
   cursor: pointer;

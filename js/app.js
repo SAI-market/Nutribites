@@ -103,11 +103,12 @@ document.querySelectorAll(".close-btn").forEach(btn => {
 });
 
 // --- HEADER SCROLL (achicar logo) ---
+// Manejo del header al hacer scroll
 window.addEventListener("scroll", () => {
   const header = document.querySelector(".topbar");
   if (window.scrollY > 50) {
-    header.classList.add("shrink");
+    header.classList.add("scrolled");
   } else {
-    header.classList.remove("shrink");
+    header.classList.remove("scrolled");
   }
 });
