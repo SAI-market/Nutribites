@@ -9,20 +9,19 @@
 <body>
   <!-- HEADER -->
   <header class="topbar">
-    <div class="logo-container">
-      <img src="images/Logo.jpeg" alt="Nutri Bites" class="logo">
-      <span class="brand">Nutri Bites</span>
-    </div>
+    <img src="images/Logo.jpeg" alt="Nutri Bites" class="logo">
     <nav class="menu">
       <a href="#hero">Inicio</a>
       <a href="#catalogo">Catálogo</a>
       <a href="#contacto">Contacto</a>
       <button id="cartBtn">Carrito (<span id="cartCount">0</span>)</button>
+      <span id="cartIcon">🛒</span>
     </nav>
   </header>
 
   <!-- HERO -->
   <section id="hero" class="hero">
+    <div class="overlay"></div>
     <div class="hero-content">
       <h1>Waffles Dietéticos</h1>
       <p>Nutritivos, deliciosos y listos para vos.</p>
@@ -33,31 +32,14 @@
   <!-- CATÁLOGO -->
   <main id="catalogo" class="catalogo">
     <h2>Nuestros Waffles</h2>
-    <div id="gallery" class="gallery"></div>
+    <div id="catalog" class="gallery"></div>
   </main>
-
-  <!-- MODAL CARRITO -->
-  <div id="cartModal" class="cart-modal hidden" aria-hidden="true">
-    <div class="cart-content">
-      <button id="closeCart" class="close-btn">×</button>
-      <h2>Tu carrito</h2>
-      <div id="cartItems" class="cart-items"></div>
-      <div class="cart-actions">
-        <div id="cartSummary" class="cart-summary"></div>
-        <div class="cart-buttons">
-          <button id="clearCart">Vaciar</button>
-          <button id="checkoutBtn" class="primary">Pagar por WhatsApp</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- CONTACTO -->
   <section id="contacto" class="contacto">
     <h2>Contacto</h2>
     <p>Escribinos por WhatsApp y te respondemos al instante</p>
-    <a href="https://wa.me/5491123456789?text=Hola!%20Quiero%20consultar%20sobre%20los%20waffles" 
-       target="_blank" class="btn-whatsapp">📲 Enviar WhatsApp</a>
+    <button id="contactBtn" class="btn-whatsapp">📲 Enviar WhatsApp</button>
   </section>
 
   <!-- FOOTER -->
