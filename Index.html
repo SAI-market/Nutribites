@@ -9,19 +9,19 @@
 <body>
   <!-- HEADER -->
   <header class="topbar">
-    <img src="images/Logo.jpeg" alt="Nutri Bites" class="logo">
+    <div class="logo-wrapper">
+      <img src="images/Logo.jpeg" alt="Nutri Bites" class="logo">
+    </div>
     <nav class="menu">
       <a href="#hero">Inicio</a>
       <a href="#catalogo">Catálogo</a>
-      <a href="#contacto">Contacto</a>
+      <button id="contactBtn">Contacto</button>
       <button id="cartBtn">Carrito (<span id="cartCount">0</span>)</button>
-      <span id="cartIcon">🛒</span>
     </nav>
   </header>
 
   <!-- HERO -->
   <section id="hero" class="hero">
-    <div class="overlay"></div>
     <div class="hero-content">
       <h1>Waffles Dietéticos</h1>
       <p>Nutritivos, deliciosos y listos para vos.</p>
@@ -35,12 +35,32 @@
     <div id="catalog" class="gallery"></div>
   </main>
 
-  <!-- CONTACTO -->
-  <section id="contacto" class="contacto">
-    <h2>Contacto</h2>
-    <p>Escribinos por WhatsApp y te respondemos al instante</p>
-    <button id="contactBtn" class="btn-whatsapp">📲 Enviar WhatsApp</button>
-  </section>
+  <!-- MODAL CARRITO -->
+  <div id="cartModal" class="modal hidden">
+    <div class="modal-content">
+      <button class="close-btn" data-close="cartModal">×</button>
+      <h2>Tu carrito</h2>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-actions">
+        <div id="cartSummary" class="cart-summary"></div>
+        <div class="cart-buttons">
+          <button id="clearCart">Vaciar</button>
+          <button id="checkoutBtn" class="primary">Pagar por WhatsApp</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL CONTACTO -->
+  <div id="contactModal" class="modal hidden">
+    <div class="modal-content">
+      <button class="close-btn" data-close="contactModal">×</button>
+      <h2>Contacto</h2>
+      <p>Escribinos tu mensaje y te respondemos por WhatsApp:</p>
+      <textarea id="contactMessage" rows="4" placeholder="Tu mensaje..."></textarea>
+      <button id="sendContact" class="btn-whatsapp">📲 Enviar WhatsApp</button>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer class="footer">
