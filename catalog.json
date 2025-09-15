@@ -2,16 +2,21 @@
   {
     "name": "Waffle Chocolate",
     "price": 1800,
-    "image": "images/waffles/Waffle_Chocolate.jpg"
+    "image": "./images/waffles/Waffle_Chocolate.jpg"
+  },
+  {
+    "name": "Waffle Demostracion",
+    "price": 1500,
+    "image": "./images/waffles/Waffle_Demostracion.jpg"
   },
   {
     "name": "Waffle Dulce",
-    "price": 1700,
-    "image": "images/waffles/Waffle_Dulce.jpg"
+    "price": 2200,
+    "image": "./images/waffles/Waffle_Dulce.jpg"
   },
   {
-    "name": "Waffle Frutilla",
-    "price": 2000,
-    "image": "images/waffles/Waffle_frutilla.jpg"
+    "name": "Waffle frutilla",
+    "price": 1500,
+    "image": "./images/waffles/Waffle_frutilla.jpg"
   }
 ]

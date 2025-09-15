@@ -28,14 +28,20 @@ body {
   gap: 10px;
 }
 
-.logo {
-  height: 140px;
-  transition: height 0.3s ease;
+.logo-wrapper img.logo {
+  width: 100px;
+  height: 100px; /* Añadido para consistencia */
+  border-radius: 50%; /* ← Esta propiedad hace el logo circular */
+  transition: all 0.3s ease; /* Cambiado a 'all' para mejor transición */
+  object-fit: cover; /* Asegura que la imagen no se distorsione */
 }
 
-.topbar.shrink .logo {
-  height: 40px; /* logo más chico al hacer scroll */
+.logo {
+  height: 140px;
+  transition: all 0.3s ease; /* Cambiado a 'all' para mejor transición */
 }
+
+
 
 .brand {
   font-weight: bold;
@@ -47,7 +53,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 6px;
+  margin-top: 6px;  /* Top Bar*/
 }
 
 .menu a, .menu button {
@@ -81,8 +87,11 @@ body {
   flex-shrink: 0;
 }
 
+/* MODIFICACIÓN PRINCIPAL: Aseguramos que el logo se reduzca en estado scrolled */
+.topbar.scrolled .logo-wrapper img.logo,
 .topbar.scrolled .logo {
-  height: 90px;                 
+  width: 60px;  /* Nuevo tamaño para modo scrolled */
+  height: 60px; /* Nuevo tamaño para modo scrolled */
 }
 
 .topbar.scrolled .menu {
@@ -93,7 +102,6 @@ body {
   max-width: 70%; 
   -ms-overflow-style: none;  
   scrollbar-width: none;  
-  
 }
 
 /* Oculta scrollbar en Chrome, Safari y Opera */
@@ -203,7 +211,6 @@ body {
 .footer .redes a {
   color: white;
   margin: 0 10px;
-
   padding: 6px 12px;
   border-radius: 6px;
   text-decoration: none;
@@ -219,41 +226,255 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.6);
+  background: rgba(59, 0, 59, 0.7); /* Fondo violeta transparente */
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 2000;
+  backdrop-filter: blur(3px); /* Efecto de desenfoque */
 }
 .modal.hidden {
   display: none;
 }
 .modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
+  background: #faf4eb; /* Beige claro de la página */
+  padding: 25px;
+  border-radius: 15px;
   width: 90%;
-  max-width: 400px;
+  max-width: 450px;
   position: relative;
+  box-shadow: 0 10px 30px rgba(59, 0, 59, 0.3);
+  border: 3px solid #e69d4f; /* Borde amarillo */
+  color: #3b003b;
 }
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  border: none;
-  background: none;
-  font-size: 1.5rem;
-  cursor: pointer;
+
+/* ESTILOS ESPECÍFICOS DEL CARRITO */
+.cart-modal {
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
 }
-.btn-whatsapp {
-  background: #25d366;
-  color: white;
-  padding: 6px 12px;
+
+.cart-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e69d4f;
+}
+
+.cart-header h2 {
+  color: #7b2e7b;
+  margin: 0 0 5px 0;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.cart-subtitle {
+  color: #7b2e7b;
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.cart-items {
+  margin-bottom: 20px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.cart-items::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cart-items::-webkit-scrollbar-track {
+  background: #e69d4f;
+  border-radius: 10px;
+}
+
+.cart-items::-webkit-scrollbar-thumb {
+  background: #7b2e7b;
+  border-radius: 10px;
+}
+
+.cart-item {
+  background: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: 2px solid #e8ba8a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(123, 46, 123, 0.1);
+  transition: all 0.3s ease;
+}
+
+.cart-item:hover {
+  border-color: #e69d4f;
+  box-shadow: 0 4px 12px rgba(123, 46, 123, 0.2);
+  transform: translateY(-2px);
+}
+
+.cart-item span {
+  font-weight: 500;
+  color: #3b003b;
+  flex: 1;
+}
+
+.cart-item input {
+  width: 60px;
+  padding: 8px;
+  border: 2px solid #e8ba8a;
   border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+  color: #3b003b;
+  background: #faf4eb;
+  transition: border-color 0.3s ease;
+}
+
+.cart-item input:focus {
+  outline: none;
+  border-color: #7b2e7b;
+  box-shadow: 0 0 0 3px rgba(123, 46, 123, 0.1);
+}
+
+.cart-actions {
+  border-top: 2px solid #e69d4f;
+  padding-top: 20px;
+}
+
+.cart-summary {
+  background: linear-gradient(135deg, #7b2e7b, #3b003b);
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.cart-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-secondary {
+  background: #e8ba8a;
+  color: #3b003b;
+  padding: 12px 18px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
   font-weight: bold;
+  font-size: 0.9rem;
+  flex: 1;
+  min-width: 120px;
+  transition: all 0.3s ease;
 }
+
+.btn-secondary:hover {
+  background: #e69d4f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(230, 157, 79, 0.3);
+}
+
+.btn-whatsapp {
+  background: #25d366;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9rem;
+  flex: 2;
+  min-width: 160px;
+  transition: all 0.3s ease;
+}
+
 .btn-whatsapp:hover {
   background: #1ebc57;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+/* CARRITO VACÍO */
+.cart-empty {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.empty-cart-content {
+  color: #7b2e7b;
+}
+
+.empty-cart-icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.cart-empty h3 {
+  margin: 10px 0;
+  font-size: 1.5rem;
+  color: #7b2e7b;
+}
+
+.cart-empty p {
+  margin: 0;
+  opacity: 0.7;
+  font-size: 1rem;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: none;
+  background: #e69d4f;
+  color: #3b003b;
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  background: #7b2e7b;
+  color: white;
+  transform: rotate(90deg);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .cart-buttons {
+    flex-direction: column;
+  }
+  
+  .btn-secondary,
+  .btn-whatsapp {
+    flex: 1;
+    min-width: 100%;
+  }
+  
+  .modal-content {
+    width: 95%;
+    padding: 20px;
+    margin: 10px;
+  }
+  
+  .cart-modal {
+    max-height: 90vh;
+  }
 }

@@ -35,17 +35,34 @@
     <div id="catalog" class="gallery"></div>
   </main>
 
+ <!-- CONSUMO -->
+  
+ 
+
   <!-- MODAL CARRITO -->
   <div id="cartModal" class="modal hidden">
-    <div class="modal-content">
+    <div class="modal-content cart-modal">
       <button class="close-btn" data-close="cartModal">×</button>
-      <h2>Tu carrito</h2>
+      <div class="cart-header">
+        <h2>🛒 Tu Carrito</h2>
+        <p class="cart-subtitle">Revisa tus deliciosos waffles</p>
+      </div>
+      
       <div id="cartItems" class="cart-items"></div>
+      
       <div class="cart-actions">
         <div id="cartSummary" class="cart-summary"></div>
         <div class="cart-buttons">
-          <button id="clearCart">Vaciar</button>
-          <button id="checkoutBtn" class="primary">Pagar por WhatsApp</button>
+          <button id="clearCart" class="btn-secondary">🗑️ Vaciar Carrito</button>
+          <button id="checkoutBtn" class="btn-whatsapp">💬 Pedir por WhatsApp</button>
+        </div>
+      </div>
+      
+      <div class="cart-empty hidden" id="cartEmpty">
+        <div class="empty-cart-content">
+          <span class="empty-cart-icon">🧇</span>
+          <h3>¡Tu carrito está vacío!</h3>
+          <p>Agrega algunos deliciosos waffles dietéticos</p>
         </div>
       </div>
     </div>

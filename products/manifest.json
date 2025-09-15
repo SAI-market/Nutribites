@@ -2,5 +2,6 @@
   { "name": "Waffle Proteico.jpg", "path": "proteico.jpg", "category": "Proteicos" },
   { "name": "Waffle Integral.jpg", "path": "integral.jpg", "category": "Integrales" },
   { "name": "Waffle SinAzucar.jpg", "path": "sinazucar.jpg", "category": "Sin Azúcar" }
+ 
 ]
 
