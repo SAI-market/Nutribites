@@ -83,6 +83,18 @@ function removeFromCart(index) {
   }
 }
 
+function updateQuantity(index, change) {
+  const newQty = cart[index].qty + change;
+  
+  if (newQty <= 0) {
+    // Si la cantidad llega a 0, eliminar del carrito
+    removeFromCart(index);
+  } else {
+    cart[index].qty = newQty;
+    renderCart();
+  }
+}
+
 function renderCart() {
   const cartItems = document.querySelector("#cartItems");
   const cartCount = document.querySelector("#cartCount");
@@ -95,13 +107,15 @@ function renderCart() {
 
   // Mostrar/ocultar elementos según si el carrito está vacío
   if (cart.length === 0) {
-    cartEmpty.classList.remove("hidden");
+    cartEmpty.classList.add("show");
     cartActions.style.display = "none";
     cartCount.textContent = "0";
+    cartItems.style.display = "none"; // Ocultar contenedor de items
     return;
   } else {
-    cartEmpty.classList.add("hidden");
+    cartEmpty.classList.remove("show");
     cartActions.style.display = "block";
+    cartItems.style.display = "block"; // Mostrar contenedor de items
   }
 
   cart.forEach((item, index) => {
@@ -111,38 +125,32 @@ function renderCart() {
     div.innerHTML = `
       <div class="cart-item-info">
         <div class="cart-item-name">${item.name}</div>
-        <div class="cart-item-price">${item.price} c/u</div>
+        <div class="cart-item-price">$${item.price} c/u</div>
       </div>
       <div class="cart-item-controls">
-        <input type="number" min="1" value="${item.qty}" data-index="${index}">
+        <div class="quantity-controls">
+          <button class="qty-btn minus-btn" data-index="${index}" ${item.qty <= 1 ? 'disabled' : ''}>−</button>
+          <span class="qty-display">${item.qty}</span>
+          <button class="qty-btn plus-btn" data-index="${index}">+</button>
+        </div>
         <button class="remove-item-btn" data-index="${index}" title="Eliminar producto">×</button>
       </div>
     `;
     cartItems.appendChild(div);
   });
 
-  // Event listeners para cambios de cantidad
-  cartItems.querySelectorAll("input").forEach(input => {
-    input.addEventListener("change", e => {
-      const idx = e.target.dataset.index;
-      const newQty = parseInt(e.target.value);
-      
-      if (newQty <= 0) {
-        // Remover item si la cantidad es 0 o menor
-        cart.splice(idx, 1);
-      } else {
-        cart[idx].qty = newQty;
-      }
-      renderCart();
+  // Event listeners para botones de cantidad
+  cartItems.querySelectorAll(".minus-btn").forEach(btn => {
+    btn.addEventListener("click", e => {
+      const idx = parseInt(e.target.dataset.index);
+      updateQuantity(idx, -1);
     });
-    
-    // Efecto visual en focus
-    input.addEventListener("focus", e => {
-      e.target.style.background = "white";
-    });
-    
-    input.addEventListener("blur", e => {
-      e.target.style.background = "#faf4eb";
+  });
+
+  cartItems.querySelectorAll(".plus-btn").forEach(btn => {
+    btn.addEventListener("click", e => {
+      const idx = parseInt(e.target.dataset.index);
+      updateQuantity(idx, 1);
     });
   });
 

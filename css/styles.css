@@ -283,6 +283,7 @@ body {
   box-shadow: 0 10px 30px rgba(59, 0, 59, 0.3);
   border: 3px solid #e69d4f; /* Borde amarillo */
   color: #3b003b;
+  overflow: hidden; /* AGREGADO: Previene que contenido se salga */
 }
 
 /* ESTILOS ESPECÍFICOS DEL CARRITO */
@@ -320,18 +321,23 @@ body {
   padding-right: 5px;
 }
 
+/* Scrollbar personalizada más delgada y estética */
 .cart-items::-webkit-scrollbar {
   width: 6px;
 }
 
 .cart-items::-webkit-scrollbar-track {
-  background: #e69d4f;
+  background: #f0e8dd;
   border-radius: 10px;
 }
 
 .cart-items::-webkit-scrollbar-thumb {
-  background: #7b2e7b;
+  background: #e8ba8a;
   border-radius: 10px;
+}
+
+.cart-items::-webkit-scrollbar-thumb:hover {
+  background: #e69d4f;
 }
 
 .cart-item {
@@ -379,22 +385,74 @@ body {
   gap: 10px;
 }
 
-.cart-item input {
-  width: 60px;
-  padding: 8px;
+/* NUEVA SECCIÓN: Controles de cantidad mejorados */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #faf4eb;
   border: 2px solid #e8ba8a;
+  border-radius: 8px;
+  padding: 2px;
+}
+
+.qty-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: #7b2e7b;
+  color: white;
   border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.qty-btn:hover {
+  background: #3b003b;
+  transform: scale(1.1);
+}
+
+.qty-btn:active {
+  transform: scale(0.95);
+}
+
+.qty-btn:disabled {
+  background: #d0d0d0;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.qty-btn:disabled:hover {
+  transform: scale(1);
+}
+
+.qty-display {
+  min-width: 40px;
   text-align: center;
   font-weight: bold;
   color: #3b003b;
-  background: #faf4eb;
-  transition: border-color 0.3s ease;
+  font-size: 1rem;
+  padding: 0 8px;
+  user-select: none;
 }
 
-.cart-item input:focus {
-  outline: none;
-  border-color: #7b2e7b;
-  box-shadow: 0 0 0 3px rgba(123, 46, 123, 0.1);
+/* Ocultar las flechitas del input number nativo */
+.cart-item input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.cart-item input[type="number"]::-webkit-inner-spin-button,
+.cart-item input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .remove-item-btn {
@@ -487,6 +545,11 @@ body {
 .cart-empty {
   text-align: center;
   padding: 40px 20px;
+  display: none; /* CAMBIADO: de hidden class a display none */
+}
+
+.cart-empty.show {
+  display: block; /* AGREGADO: para mostrar cuando está vacío */
 }
 
 .empty-cart-content {
@@ -556,5 +619,22 @@ body {
   
   .cart-modal {
     max-height: 90vh;
+  }
+  
+  .quantity-controls {
+    gap: 3px;
+    padding: 1px;
+  }
+  
+  .qty-btn {
+    width: 24px;
+    height: 24px;
+    font-size: 1rem;
+  }
+  
+  .qty-display {
+    min-width: 30px;
+    font-size: 0.9rem;
+    padding: 0 5px;
   }
 }
