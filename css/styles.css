@@ -197,8 +197,45 @@ body {
   cursor: pointer;
   font-weight: bold;
 }
+.gallery-item button {
+  position: relative;
+  overflow: hidden;
+}
+
 .gallery-item button:hover {
   background: #e69d4f;
+}
+
+/* FEEDBACK VISUAL AL AGREGAR AL CARRITO */
+.add-feedback {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #25d366;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: bold;
+  pointer-events: none;
+  z-index: 10;
+  animation: feedbackPop 1.5s ease-out forwards;
+}
+
+@keyframes feedbackPop {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  30% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -90%) scale(1);
+  }
 }
 
 /* FOOTER */
@@ -308,6 +345,7 @@ body {
   align-items: center;
   box-shadow: 0 2px 8px rgba(123, 46, 123, 0.1);
   transition: all 0.3s ease;
+  gap: 10px;
 }
 
 .cart-item:hover {
@@ -316,10 +354,29 @@ body {
   transform: translateY(-2px);
 }
 
-.cart-item span {
-  font-weight: 500;
-  color: #3b003b;
+.cart-item-info {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cart-item-name {
+  font-weight: 600;
+  color: #3b003b;
+  font-size: 0.95rem;
+}
+
+.cart-item-price {
+  font-size: 0.85rem;
+  color: #7b2e7b;
+  opacity: 0.8;
+}
+
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .cart-item input {
@@ -338,6 +395,29 @@ body {
   outline: none;
   border-color: #7b2e7b;
   box-shadow: 0 0 0 3px rgba(123, 46, 123, 0.1);
+}
+
+.remove-item-btn {
+  background: #ff4757;
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.remove-item-btn:hover {
+  background: #ff3742;
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 4px 12px rgba(255, 71, 87, 0.3);
 }
 
 .cart-actions {

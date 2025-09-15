@@ -13,7 +13,7 @@ fetch("catalog.json")
         <p>$${item.price}</p>
         <button class="addCart">Agregar</button>
       `;
-      card.querySelector(".addCart").addEventListener("click", () => addToCart(item));
+      card.querySelector(".addCart").addEventListener("click", (e) => addToCart(item, e.target));
       container.appendChild(card);
     });
   })
@@ -22,8 +22,10 @@ fetch("catalog.json")
 // --- CARRITO ---
 let cart = [];
 
-function addToCart(item) {
+function addToCart(item, buttonElement) {
   const found = cart.find(i => i.name === item.name);
+  let addedQty = 1;
+  
   if (found) {
     found.qty++;
   } else {
@@ -33,6 +35,7 @@ function addToCart(item) {
   
   // Feedback visual al agregar producto
   showCartFeedback();
+  showAddFeedback(buttonElement, addedQty);
 }
 
 function showCartFeedback() {
@@ -44,6 +47,40 @@ function showCartFeedback() {
     cartBtn.style.transform = "scale(1)";
     cartBtn.style.background = "#7b2e7b";
   }, 200);
+}
+
+function showAddFeedback(buttonElement, quantity) {
+  // Crear elemento de feedback
+  const feedback = document.createElement("div");
+  feedback.className = "add-feedback";
+  feedback.textContent = `+${quantity}`;
+  
+  // Añadir al botón
+  buttonElement.style.position = "relative";
+  buttonElement.appendChild(feedback);
+  
+  // Remover después de la animación
+  setTimeout(() => {
+    if (feedback.parentNode) {
+      feedback.parentNode.removeChild(feedback);
+    }
+  }, 1500);
+}
+
+function removeFromCart(index) {
+  if (confirm("¿Querés eliminar este producto del carrito?")) {
+    cart.splice(index, 1);
+    renderCart();
+    
+    // Feedback visual si el carrito queda vacío
+    if (cart.length === 0) {
+      const cartCount = document.querySelector("#cartCount");
+      cartCount.style.color = "#ff4757";
+      setTimeout(() => {
+        cartCount.style.color = "white";
+      }, 500);
+    }
+  }
 }
 
 function renderCart() {
@@ -72,8 +109,14 @@ function renderCart() {
     const div = document.createElement("div");
     div.classList.add("cart-item");
     div.innerHTML = `
-      <span>${item.name} - $${item.price}</span>
-      <input type="number" min="1" value="${item.qty}" data-index="${index}">
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-price">${item.price} c/u</div>
+      </div>
+      <div class="cart-item-controls">
+        <input type="number" min="1" value="${item.qty}" data-index="${index}">
+        <button class="remove-item-btn" data-index="${index}" title="Eliminar producto">×</button>
+      </div>
     `;
     cartItems.appendChild(div);
   });
@@ -100,6 +143,14 @@ function renderCart() {
     
     input.addEventListener("blur", e => {
       e.target.style.background = "#faf4eb";
+    });
+  });
+
+  // Event listeners para botones de eliminar
+  cartItems.querySelectorAll(".remove-item-btn").forEach(btn => {
+    btn.addEventListener("click", e => {
+      const idx = parseInt(e.target.dataset.index);
+      removeFromCart(idx);
     });
   });
 
