@@ -158,10 +158,114 @@ body {
   background: #3b003b;
 }
 
+/* SECCIONES INFO */
+.info-sections {
+  padding: 60px 20px;
+  background: #faf4eb;
+}
+
+.info-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.info-card {
+  background: white;
+  border-radius: 15px;
+  padding: 40px;
+  box-shadow: 0 4px 15px rgba(123, 46, 123, 0.1);
+  border: 2px solid #e8ba8a;
+  transition: all 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(123, 46, 123, 0.15);
+  border-color: #e69d4f;
+}
+
+.info-card h2 {
+  color: #7b2e7b;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 3px solid #e69d4f;
+  text-align: center;
+}
+
+.info-card p {
+  color: #3b003b;
+  line-height: 1.8;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  text-align: justify;
+}
+
+/* Sección Consumo específica */
+.consumo-steps {
+  margin-top: 20px;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #faf4eb;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.step-item:hover {
+  background: #f5ead8;
+  transform: translateX(10px);
+}
+
+.step-number {
+  background: linear-gradient(135deg, #7b2e7b, #3b003b);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.step-text {
+  color: #3b003b;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.step-text strong {
+  color: #7b2e7b;
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+}
+
+/* Iconos decorativos */
+.info-icon {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #e69d4f;
+}
+
 /* CATÁLOGO */
 .catalogo {
   padding: 40px 20px;
   text-align: center;
+  background: #f5ead8;
 }
 .gallery {
   display: grid;
@@ -290,7 +394,34 @@ body {
 .cart-modal {
   max-width: 500px;
   max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Contenedor scrolleable interno */
+.cart-modal-body {
   overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+  padding-right: 5px;
+}
+
+/* Scrollbar personalizada para el modal completo */
+.cart-modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cart-modal-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cart-modal-body::-webkit-scrollbar-thumb {
+  background: #e8ba8a;
+  border-radius: 10px;
+}
+
+.cart-modal-body::-webkit-scrollbar-thumb:hover {
+  background: #e69d4f;
 }
 
 .cart-header {
@@ -601,6 +732,36 @@ body {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+  .info-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .info-card {
+    padding: 25px;
+  }
+  
+  .info-card h2 {
+    font-size: 1.5rem;
+  }
+  
+  .step-item {
+    padding: 10px;
+  }
+  
+  .step-number {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+    margin-right: 15px;
+  }
+  
+  .step-text strong {
+    font-size: 1rem;
+  }
+
+@media (max-width: 768px) 
+{
   .cart-buttons {
     flex-direction: column;
   }
@@ -637,4 +798,5 @@ body {
     font-size: 0.9rem;
     padding: 0 5px;
   }
+}
 }

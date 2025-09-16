@@ -14,6 +14,7 @@
     </div>
     <nav class="menu">
       <a href="#hero">Inicio</a>
+      <a href="#info">Nosotros</a>
       <a href="#catalogo">Catálogo</a>
       <button id="contactBtn">Contacto</button>
       <button id="cartBtn">Carrito (<span id="cartCount">0</span>)</button>
@@ -29,40 +30,95 @@
     </div>
   </section>
 
+  <!-- SECCIONES INFORMATIVAS -->
+  <section id="info" class="info-sections">
+    <div class="info-container">
+      <!-- SOBRE NOSOTROS -->
+      <div class="info-card">
+        <div class="info-icon">🧇</div>
+        <h2>Sobre Nosotros</h2>
+        <p>
+          En <strong>Nutri Bites</strong>, nos especializamos en crear waffles dietéticos que no solo son deliciosos, sino también nutritivos y saludables. 
+        </p>
+        <p>
+          Nuestros productos están elaborados con ingredientes de primera calidad, pensados especialmente para quienes buscan mantener un estilo de vida saludable sin renunciar al placer de un buen desayuno o merienda.
+        </p>
+        <p>
+          Cada waffle está cuidadosamente preparado con una receta balanceada que aporta proteínas, fibras y nutrientes esenciales, siendo ideal para deportistas, personas con dietas especiales o simplemente para quienes eligen comer rico y sano.
+        </p>
+      </div>
+
+      <!-- CONSUMO -->
+      <div class="info-card">
+        <div class="info-icon">🍴</div>
+        <h2>¿Cómo Consumirlos?</h2>
+        <div class="consumo-steps">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-text">
+              <strong>Descongelar</strong>
+              Sacá el waffle del freezer y dejalo a temperatura ambiente por 5 minutos.
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-text">
+              <strong>Calentar</strong>
+              Tostadora: 2-3 minutos | Horno: 5 min a 180° | Microondas: 30 segundos
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-text">
+              <strong>Personalizar</strong>
+              Agregá tus toppings favoritos: frutas, miel, mantequilla de maní, o lo que prefieras.
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-text">
+              <strong>¡Disfrutar!</strong>
+              Tu waffle nutritivo está listo para ser disfrutado en cualquier momento del día.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CATÁLOGO -->
   <main id="catalogo" class="catalogo">
     <h2>Nuestros Waffles</h2>
     <div id="catalog" class="gallery"></div>
   </main>
 
- <!-- CONSUMO -->
-  
- 
-
   <!-- MODAL CARRITO -->
   <div id="cartModal" class="modal hidden">
     <div class="modal-content cart-modal">
       <button class="close-btn" data-close="cartModal">×</button>
-      <div class="cart-header">
-        <h2>🛒 Tu Carrito</h2>
-        <p class="cart-subtitle">Revisa tus Nutritivos Waffles</p>
-      </div>
       
-      <div id="cartItems" class="cart-items"></div>
-      
-      <div class="cart-actions">
-        <div id="cartSummary" class="cart-summary"></div>
-        <div class="cart-buttons">
-          <button id="clearCart" class="btn-secondary">🗑️ Vaciar Carrito</button>
-          <button id="checkoutBtn" class="btn-whatsapp">💬 Pedir por WhatsApp</button>
+      <div class="cart-modal-body">
+        <div class="cart-header">
+          <h2>🛒 Tu Carrito</h2>
+          <p class="cart-subtitle">Revisa tus Nutritivos Waffles</p>
         </div>
-      </div>
-      
-      <div class="cart-empty hidden" id="cartEmpty">
-        <div class="empty-cart-content">
-          <span class="empty-cart-icon">🧇</span>
-          <h3>¡Tu carrito está vacío!</h3>
-          <p>Agrega algunos deliciosos Waffles Nutritivos</p>
+        
+        <div id="cartItems" class="cart-items"></div>
+        
+        <div class="cart-actions">
+          <div id="cartSummary" class="cart-summary"></div>
+          <div class="cart-buttons">
+            <button id="clearCart" class="btn-secondary">🗑️ Vaciar Carrito</button>
+            <button id="checkoutBtn" class="btn-whatsapp">💬 Pedir por WhatsApp</button>
+          </div>
+        </div>
+        
+        <div class="cart-empty" id="cartEmpty">
+          <div class="empty-cart-content">
+            <span class="empty-cart-icon">🧇</span>
+            <h3>¡Tu carrito está vacío!</h3>
+            <p>Agrega algunos deliciosos Waffles Nutritivos</p>
+          </div>
         </div>
       </div>
     </div>
@@ -74,8 +130,8 @@
       <button class="close-btn" data-close="contactModal">×</button>
       <h2>Contacto</h2>
       <p>Escribinos tu consulta:</p>
-      <textarea id="contactMessage" rows="4" placeholder="Tu mensaje..."></textarea>
-      <button id="sendContact" class="btn-whatsapp">Enviar WhatsApp</button>
+      <textarea id="contactMessage" rows="4" placeholder="Tu mensaje..." style="width: 100%; padding: 10px; border: 2px solid #e8ba8a; border-radius: 8px; resize: vertical; font-family: Arial, sans-serif;"></textarea>
+      <button id="sendContact" class="btn-whatsapp" style="margin-top: 15px;">Enviar WhatsApp</button>
     </div>
   </div>
 
