@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Nutri Bites - Waffles Proteicos</title>
-  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
   <!-- HEADER -->
@@ -148,6 +147,19 @@
     </div>
   </footer>
 
-  <script src="js/app.js" type="module"></script>
+  <!-- TIMESTAMP -->
+  <script>
+    const timestamp = new Date().getTime();
+
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = 'css/styles.css?v=' + timestamp;
+    document.head.appendChild(css);
+
+    const js = document.createElement('script');
+    js.type = 'module';
+    js.src = 'js/app.js?v=' + timestamp;
+    document.body.appendChild(js);
+  </script>
 </body>
 </html>
