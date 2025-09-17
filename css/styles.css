@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #e7d2b3; /* beige claro */
+  background: #f6f3e3; /* beige claro */
   color: #3b003b; /* violeta */
 }
 
@@ -118,9 +118,17 @@ body {
 .topbar.scrolled .menu a, 
 .topbar.scrolled .menu button {
   padding: 5px 8px; 
-  font-size: 0.85rem; /* Reduce ligeramente el tamaño de fuente */
+  font-size: 0.75rem; /* Reduce ligeramente el tamaño de fuente */
+  display: inline-flex;
+  align-items: center;
   white-space: nowrap; /* Evita que el texto se divida en varias líneas */
   margin: 2px; /* Reduce el margen entre elementos */
+}
+
+.topbar.scrolled #contactBtn,
+.topbar.scrolled #cartBtn {
+  padding: 5px 6px; /* más compacto en modo icono */
+  font-size: 1rem;  /* que no se vea enano ni gigante */
 }
 
 .menu button {
@@ -167,7 +175,7 @@ body {
 /* SECCIONES INFO */
 .info-sections {
   padding: 60px 20px;
-  /* background: #e7d2b3; */ /* Fondo detras de las secciones */
+  background: #f6f3e3; /* Fondo Secciones*/
 }
 
 .info-container {
@@ -491,7 +499,7 @@ body {
   display: none;
 }
 .modal-content {
-  background: #faf4eb; /* Fondo TIENDA */
+  background: #f6f3e3; /* Fondo TIENDA */
   padding: 25px;
   border-radius: 15px;
   width: 90%;

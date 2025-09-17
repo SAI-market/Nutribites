@@ -366,6 +366,39 @@ window.addEventListener("scroll", () => {
     header.classList.remove("scrolled");
   }
 });
+// --- CAMBIO DE TEXTO EN BOTONES AL SCROLLEAR ---
+const topbar = document.querySelector(".topbar");
+const contactBtn = document.getElementById("contactBtn");
+const cartBtn = document.getElementById("cartBtn");
+const cartCount = document.getElementById("cartCount");
+
+// Textos originales
+const originalContactText = "Contacto";
+const originalCartText = "Carrito";
+
+// Función que actualiza los botones según el estado del topbar
+function updateButtonsOnScroll() {
+  if (topbar.classList.contains("scrolled")) {
+    contactBtn.textContent = "📞";
+    cartBtn.innerHTML = `🛒 (<span id="cartCount">${cartCount.textContent}</span>)`;
+  } else {
+    contactBtn.textContent = originalContactText;
+    cartBtn.innerHTML = `${originalCartText} (<span id="cartCount">${cartCount.textContent}</span>)`;
+  }
+}
+
+// Escuchar el scroll para añadir o quitar la clase "scrolled"
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 50) {
+    topbar.classList.add("scrolled");
+  } else {
+    topbar.classList.remove("scrolled");
+  }
+  updateButtonsOnScroll();
+});
+
+// Asegurar que al cargar la página se muestren correctos
+updateButtonsOnScroll();
 
 // Inicializar carrito al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
