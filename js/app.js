@@ -1,3 +1,50 @@
+// --- FUNCIONES DE GALERÍA DE IMÁGENES ---
+function initializeProductGallery(galleryElement) {
+  const images = galleryElement.querySelectorAll('img');
+  const dots = galleryElement.querySelectorAll('.dot');
+  const prevBtn = galleryElement.querySelector('.prev-btn');
+  const nextBtn = galleryElement.querySelector('.next-btn');
+  
+  if (images.length <= 1) {
+    galleryElement.classList.add('single-image');
+    return;
+  }
+  
+  let currentIndex = 0;
+  
+  function showImage(index) {
+    images.forEach((img, i) => {
+      img.classList.toggle('active', i === index);
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+    currentIndex = index;
+  }
+  
+  function nextImage() {
+    const newIndex = (currentIndex + 1) % images.length;
+    showImage(newIndex);
+  }
+  
+  function prevImage() {
+    const newIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(newIndex);
+  }
+  
+  // Event listeners para los botones
+  if (prevBtn) prevBtn.addEventListener('click', prevImage);
+  if (nextBtn) nextBtn.addEventListener('click', nextImage);
+  
+  // Event listeners para los dots
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => showImage(index));
+  });
+  
+  // Inicializar mostrando la primera imagen
+  showImage(0);
+}
+
 // --- CARGAR CATÁLOGO ---
 fetch("catalog.json")
   .then(res => res.json())
@@ -7,13 +54,63 @@ fetch("catalog.json")
     data.forEach(item => {
       const card = document.createElement("div");
       card.classList.add("gallery-item");
+      
+      // Si el item tiene múltiples imágenes, crear galería
+      let imagesHtml = '';
+      let dotsHtml = '';
+      
+      if (item.images && item.images.length > 0) {
+        // Múltiples imágenes
+        imagesHtml = item.images.map((img, index) => 
+          `<img src="${img}" alt="${item.name}" class="${index === 0 ? 'active' : ''}">`
+        ).join('');
+        
+        if (item.images.length > 1) {
+          dotsHtml = `
+            <div class="gallery-dots">
+              ${item.images.map((_, index) => 
+                `<span class="dot ${index === 0 ? 'active' : ''}"></span>`
+              ).join('')}
+            </div>
+          `;
+        }
+      } else if (item.image) {
+        // Una sola imagen (compatibilidad con formato anterior)
+        imagesHtml = `<img src="${item.image}" alt="${item.name}" class="active">`;
+      }
+      
       card.innerHTML = `
-        <img src="${item.image}" alt="${item.name}">
+        <div class="product-gallery">
+          ${imagesHtml}
+          ${dotsHtml}
+          ${item.images && item.images.length > 1 ? `
+            <div class="gallery-nav">
+              <button class="prev-btn">‹</button>
+              <button class="next-btn">›</button>
+            </div>
+          ` : ''}
+        </div>
         <h3>${item.name}</h3>
         <p>$${item.price}</p>
         <button class="addCart">Agregar</button>
       `;
-      card.querySelector(".addCart").addEventListener("click", (e) => addToCart(item, e.target));
+      
+      // Inicializar galería si tiene múltiples imágenes
+      const gallery = card.querySelector('.product-gallery');
+      if (gallery) {
+        initializeProductGallery(gallery);
+      }
+      
+      // Event listener para agregar al carrito
+      card.querySelector(".addCart").addEventListener("click", (e) => {
+        // Usar la primera imagen para el carrito
+        const cartItem = {
+          ...item,
+          image: item.images ? item.images[0] : item.image
+        };
+        addToCart(cartItem, e.target);
+      });
+      
       container.appendChild(card);
     });
   })

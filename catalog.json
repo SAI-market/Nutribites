@@ -1,22 +1,29 @@
 [
   {
-    "name": "Waffle Chocolate",
+    "name": "Waffle Proteico (2 unidades)",
     "price": 1800,
-    "image": "./images/waffles/Waffle_Chocolate.jpg"
+    "images": [
+      "./images/waffles/Waffle_Proteico_1.jpeg",
+      "./images/waffles/Waffle_Proteico_2.jpeg",
+      "./images/waffles/Waffle_Proteico_3.jpeg"
+    ]
   },
   {
-    "name": "Waffle Demostracion",
-    "price": 1500,
-    "image": "./images/waffles/Waffle_Demostracion.jpg"
+    "name": "Waffle Proteico (4 unidades)",
+    "price": 2000,
+    "images": [
+      "./images/waffles/Waffle_Proteico_1.jpeg",
+      "./images/waffles/Waffle_Proteico_2.jpeg",
+      "./images/waffles/Waffle_Proteico_3.jpeg"
+    ]
   },
   {
-    "name": "Waffle Dulce",
-    "price": 2200,
-    "image": "./images/waffles/Waffle_Dulce.jpg"
-  },
-  {
-    "name": "Waffle frutilla",
-    "price": 1500,
-    "image": "./images/waffles/Waffle_frutilla.jpg"
+    "name": "Waffle Proteico (8 unidades)",
+    "price": 2500,
+    "images": [
+      "./images/waffles/Waffle_Proteico_1.jpeg",
+      "./images/waffles/Waffle_Proteico_2.jpeg",
+      "./images/waffles/Waffle_Proteico_3.jpeg"
+    ]
   }
 ]
