@@ -1,29 +1,30 @@
 [
   {
     "name": "Waffle Proteico (2 unidades)",
-    "price": 1800,
+    "price": 10000,
     "images": [
-      "./images/waffles/Waffle_Proteico_1.jpeg",
-      "./images/waffles/Waffle_Proteico_2.jpeg",
-      "./images/waffles/Waffle_Proteico_3.jpeg"
+      "./images/waffles/Catalogo/Waffles_dos_1.jpeg",
+      "./images/waffles/Catalogo/Waffles_dos_2.jpeg",
+      "./images/waffles/Catalogo/Waffles_dos_3.jpeg",
+      "./images/waffles/Catalogo/Waffles_dos_4.jpeg"
     ]
   },
   {
     "name": "Waffle Proteico (4 unidades)",
-    "price": 2000,
+    "price": 14000,
     "images": [
-      "./images/waffles/Waffle_Proteico_1.jpeg",
-      "./images/waffles/Waffle_Proteico_2.jpeg",
-      "./images/waffles/Waffle_Proteico_3.jpeg"
+      "./images/waffles/Catalogo/Waffles_cuatro_1.jpeg",
+      "./images/waffles/Catalogo/Waffles_cuatro_2.jpeg",
+      "./images/waffles/Catalogo/Waffles_cuatro_3.jpeg"
     ]
   },
   {
     "name": "Waffle Proteico (8 unidades)",
-    "price": 2500,
+    "price": 22000,
     "images": [
-      "./images/waffles/Waffle_Proteico_1.jpeg",
-      "./images/waffles/Waffle_Proteico_2.jpeg",
-      "./images/waffles/Waffle_Proteico_3.jpeg"
+      "./images/waffles/Catalogo/Waffles_ocho_1.jpeg",
+      "./images/waffles/Catalogo/Waffles_ocho_2.jpeg",
+      "./images/waffles/Catalogo/Waffles_ocho_3.jpeg"
     ]
   }
 ]

@@ -93,11 +93,11 @@ body {
   flex-shrink: 0;
 }
 
-/* MODIFICACIÓN PRINCIPAL: Aseguramos que el logo se reduzca en estado scrolled */
+
 .topbar.scrolled .logo-wrapper img.logo,
 .topbar.scrolled .logo {
-  width: 60px;  /* Nuevo tamaño para modo scrolled */
-  height: 60px; /* Nuevo tamaño para modo scrolled */
+  width: 60px;  
+  height: 60px;
 }
 
 .topbar.scrolled .menu {
@@ -118,17 +118,17 @@ body {
 .topbar.scrolled .menu a, 
 .topbar.scrolled .menu button {
   padding: 5px 8px; 
-  font-size: 0.75rem; /* Reduce ligeramente el tamaño de fuente */
+  font-size: 0.75rem; 
   display: inline-flex;
   align-items: center;
-  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
-  margin: 2px; /* Reduce el margen entre elementos */
+  white-space: nowrap; 
+  margin: 2px; 
 }
 
 .topbar.scrolled #contactBtn,
 .topbar.scrolled #cartBtn {
   padding: 5px 6px; /* más compacto en modo icono */
-  font-size: 1rem;  /* que no se vea enano ni gigante */
+  font-size: 1rem; 
 }
 
 .menu button {
@@ -145,8 +145,8 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: wheat;
-  margin-top: 140px; /* Aumentado para compensar la barra superior */
+  color: #f6f3e3;
+  margin-top: 140px; 
 }
 .hero-content {
   background: rgba(0,0,0,0.5);
