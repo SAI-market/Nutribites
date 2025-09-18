@@ -275,6 +275,46 @@ body {
   color: #e69d4f;
 }
 
+/* SECCIÓN IMÁGENES FIJAS */
+.fixed-images-section {
+  padding: 60px 20px;
+  background: #f6f3e3;
+}
+
+.fixed-images-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px; /* Espacio entre imágenes - podés cambiar este valor */
+  flex-wrap: wrap;
+}
+
+.fixed-image {
+  flex: 1;
+  max-width: 335px; /* Ajustado para imágenes 1080x1350 */
+  min-width: 280px; /* Ancho mínimo para responsividad */
+}
+
+.fixed-image img {
+  width: 100%;
+  height: 420px; /* Altura ajustada para proporción vertical */
+  object-fit: contain;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(123, 46, 123, 0.15);
+  border: 3px solid #e8ba8a;
+  transition: all 0.3s ease;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+.fixed-image img:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(123, 46, 123, 0.25);
+  border-color: #e69d4f;
+}
+
 /* CATÁLOGO */
 .catalogo {
   padding: 40px 20px;
@@ -893,6 +933,20 @@ body {
     font-size: 1rem;
   }
 
+  /* Imágenes fijas responsive */
+  .fixed-images-container {
+    flex-direction: column;
+    gap: 25px;
+  }
+  
+  .fixed-image {
+    max-width: 320px; /* Ajustado para móviles */
+  }
+  
+  .fixed-image img {
+    height: 400px; /* Altura ajustada para móviles */
+  }
+
   .cart-buttons {
     flex-direction: column;
   }
@@ -939,5 +993,18 @@ body {
   
   .gallery-item {
     max-width: 280px;
+  }
+
+  /* Imágenes fijas para móviles pequeños */
+  .fixed-images-container {
+    gap: 20px;
+  }
+  
+  .fixed-image {
+    max-width: 280px;
+  }
+  
+  .fixed-image img {
+    height: 350px; /* Altura ajustada para móviles pequeños */
   }
 }
