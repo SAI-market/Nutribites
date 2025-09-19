@@ -93,8 +93,9 @@ body {
   justify-content: flex-start;
   flex-shrink: 0;
   min-width: 60px;
+  display: flex;
+  align-items: center; /* AGREGADO: Centrar verticalmente el logo */
 }
-
 
 .topbar.scrolled .logo-wrapper img.logo,
 .topbar.scrolled .logo {
@@ -119,20 +120,97 @@ body {
 
 .topbar.scrolled .menu a, 
 .topbar.scrolled .menu button {
-  padding: 6px 10px;
+  padding: 4px 8px; /* REDUCIDO: Menos padding vertical para botones de texto */
   font-size: 1rem;
   display: flex;
   align-items: center;
-  white-space: nowrap; 
-  margin: 2px;
-  min-width: 38px; /* Evita que los botones se achiquen demasiado */
   justify-content: center;
+  white-space: nowrap; 
+  margin: 0;
+  min-width: 40px;
+  height: 32px; /* REDUCIDO: Altura más pequeña para botones de texto */
+  border-radius: 6px;
 }
 
 .topbar.scrolled #contactBtn,
 .topbar.scrolled #cartBtn {
-  padding: 5px 6px; /* más compacto en modo icono */
-  font-size: 1rem; 
+  padding: 6px 8px; /* REDUCIDO: Menos padding para iconos */
+  font-size: 1.1rem;
+  min-width: 40px; /* REDUCIDO: Ancho consistente */
+  height: 32px; /* REDUCIDO: Altura consistente con otros botones */
+}
+
+/* AGREGADO: Media queries específicas para móviles */
+@media (max-width: 768px) {
+  .topbar.scrolled {
+    padding: 8px 12px; /* Más padding en móviles */
+    gap: 8px;
+  }
+  
+  .topbar.scrolled .logo-wrapper {
+    min-width: 50px;
+  }
+  
+  .topbar.scrolled .logo-wrapper img.logo,
+  .topbar.scrolled .logo {
+    width: 50px;  
+    height: 50px;
+  }
+  
+  .topbar.scrolled .menu {
+    max-width: 75vw; /* Más espacio para botones en móvil */
+    gap: 4px;
+  }
+  
+  .topbar.scrolled .menu a, 
+  .topbar.scrolled .menu button {
+    padding: 6px 6px; /* REDUCIDO: Padding más pequeño para móvil */
+    min-width: 32px;
+    height: 28px; /* REDUCIDO: Altura más pequeña */
+    font-size: 0.9rem;
+  }
+  
+  .topbar.scrolled #contactBtn,
+  .topbar.scrolled #cartBtn {
+    padding: 6px 6px; /* REDUCIDO: Padding consistente */
+    font-size: 1rem;
+    min-width: 32px; /* REDUCIDO: Ancho consistente */
+    height: 28px; /* REDUCIDO: Altura consistente */
+  }
+}
+
+@media (max-width: 480px) {
+  .topbar.scrolled {
+    padding: 6px 10px;
+    gap: 6px;
+  }
+  
+  .topbar.scrolled .logo-wrapper img.logo,
+  .topbar.scrolled .logo {
+    width: 45px;  
+    height: 45px;
+  }
+  
+  .topbar.scrolled .menu {
+    max-width: 70vw;
+    gap: 3px;
+  }
+  
+  .topbar.scrolled .menu a, 
+  .topbar.scrolled .menu button {
+    padding: 4px 4px; /* REDUCIDO: Padding muy pequeño para móviles pequeños */
+    min-width: 28px;
+    height: 26px; /* REDUCIDO: Altura muy pequeña */
+    font-size: 0.85rem;
+  }
+  
+  .topbar.scrolled #contactBtn,
+  .topbar.scrolled #cartBtn {
+    padding: 4px 4px; /* REDUCIDO: Padding muy pequeño */
+    font-size: 0.95rem;
+    min-width: 28px; /* REDUCIDO: Ancho muy pequeño */
+    height: 26px; /* REDUCIDO: Altura consistente */
+  }
 }
 
 .menu button {
@@ -516,7 +594,7 @@ body {
   position: relative;
   box-shadow: 0 10px 30px rgba(59, 0, 59, 0.3);
   border: 3px solid #e69d4f; /* Borde amarillo */
-  color: #3b003b;
+  color: #842660;
   overflow: hidden; /* AGREGADO: Previene que contenido se salga */
 }
 
