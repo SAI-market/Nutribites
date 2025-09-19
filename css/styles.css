@@ -82,15 +82,17 @@ body {
 
 /* --- ESTADO SCROLLED --- */
 .topbar.scrolled {
-  flex-direction: row;          
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 15px; 
+  padding: 5px 15px;
+  gap: 10px; /* Añade espacio entre logo y menú */
 }
 
 .topbar.scrolled .logo-wrapper {
-  justify-content: flex-start;  
+  justify-content: flex-start;
   flex-shrink: 0;
+  min-width: 60px;
 }
 
 
@@ -105,9 +107,9 @@ body {
   display: flex;
   flex-wrap: nowrap; 
   overflow-x: auto; 
-  max-width: 70%; 
-  -ms-overflow-style: none;  
-  scrollbar-width: none;  
+  max-width: 80vw; /* Más espacio para los botones */
+  align-items: center; /* Centra verticalmente los botones */
+  gap: 6px; /* Espacio entre botones */
 }
 
 /* Oculta scrollbar en Chrome, Safari y Opera */
@@ -117,12 +119,14 @@ body {
 
 .topbar.scrolled .menu a, 
 .topbar.scrolled .menu button {
-  padding: 5px 8px; 
-  font-size: 0.75rem; 
-  display: inline-flex;
+  padding: 6px 10px;
+  font-size: 1rem;
+  display: flex;
   align-items: center;
   white-space: nowrap; 
-  margin: 2px; 
+  margin: 2px;
+  min-width: 38px; /* Evita que los botones se achiquen demasiado */
+  justify-content: center;
 }
 
 .topbar.scrolled #contactBtn,
