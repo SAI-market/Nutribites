@@ -428,7 +428,7 @@ body {
 }
 
 .dot.active {
-  background: #7b2e7b;
+  background: #842660;
   transform: scale(1.3);
 }
 
@@ -446,8 +446,8 @@ body {
 }
 
 .gallery-nav button {
-  background: rgba(123, 46, 123, 0.8);
-  color: white;
+  background: #842660;
+  color: #842660;
   border: none;
   width: 30px;
   height: 30px;
@@ -640,14 +640,14 @@ body {
 }
 
 .cart-header h2 {
-  color: #7b2e7b;
+  color: #842660;
   margin: 0 0 5px 0;
   font-size: 1.8rem;
   font-weight: bold;
 }
 
 .cart-subtitle {
-  color: #7b2e7b;
+  color: #842660;
   margin: 0;
   font-size: 0.9rem;
   opacity: 0.8;
@@ -708,13 +708,13 @@ body {
 
 .cart-item-name {
   font-weight: 600;
-  color: #3b003b;
+  color: #842660;
   font-size: 0.95rem;
 }
 
 .cart-item-price {
   font-size: 0.85rem;
-  color: #7b2e7b;
+  color: #842660;
   opacity: 0.8;
 }
 
@@ -739,7 +739,7 @@ body {
   width: 28px;
   height: 28px;
   border: none;
-  background: #7b2e7b;
+  background: #842660;
   color: white;
   border-radius: 6px;
   cursor: pointer;
@@ -753,7 +753,7 @@ body {
 }
 
 .qty-btn:hover {
-  background: #3b003b;
+  background: #842660;
   transform: scale(1.1);
 }
 
@@ -775,7 +775,7 @@ body {
   min-width: 40px;
   text-align: center;
   font-weight: bold;
-  color: #3b003b;
+  color: #842660;
   font-size: 1rem;
   padding: 0 8px;
   user-select: none;
@@ -823,7 +823,7 @@ body {
 }
 
 .cart-summary {
-  background: linear-gradient(135deg, #7b2e7b, #3b003b);
+  background: linear-gradient(135deg, #7b2e7b, #842660);
   color: white;
   padding: 15px;
   border-radius: 10px;
@@ -842,7 +842,7 @@ body {
 
 .btn-secondary {
   background: #e8ba8a;
-  color: #3b003b;
+  color: #842660;
   padding: 12px 18px;
   border-radius: 8px;
   border: none;
@@ -892,7 +892,7 @@ body {
 }
 
 .empty-cart-content {
-  color: #7b2e7b;
+  color: #842660;
 }
 
 .empty-cart-icon {
@@ -904,7 +904,7 @@ body {
 .cart-empty h3 {
   margin: 10px 0;
   font-size: 1.5rem;
-  color: #7b2e7b;
+  color: #842660;
 }
 
 .cart-empty p {
@@ -919,7 +919,7 @@ body {
   right: 15px;
   border: none;
   background: #e69d4f;
-  color: #3b003b;
+  color: #842660;
   font-size: 1.5rem;
   cursor: pointer;
   width: 35px;
@@ -933,7 +933,7 @@ body {
 }
 
 .close-btn:hover {
-  background: #7b2e7b;
+  background: #842660;
   color: white;
   transform: rotate(90deg);
 }

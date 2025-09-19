@@ -138,11 +138,11 @@ function addToCart(item, buttonElement) {
 function showCartFeedback() {
   const cartBtn = document.querySelector("#cartBtn");
   cartBtn.style.transform = "scale(1.1)";
-  cartBtn.style.background = "#3b003b";
+  cartBtn.style.background = "#b868b8"; // Color más oscuro al agregar (feedback)
   
   setTimeout(() => {
     cartBtn.style.transform = "scale(1)";
-    cartBtn.style.background = "#7b2e7b";
+    cartBtn.style.background = "#842660";
   }, 200);
 }
 
@@ -370,7 +370,6 @@ window.addEventListener("scroll", () => {
 const topbar = document.querySelector(".topbar");
 const contactBtn = document.getElementById("contactBtn");
 const cartBtn = document.getElementById("cartBtn");
-const cartCount = document.getElementById("cartCount");
 
 // Textos originales
 const originalContactText = "Contacto";
@@ -378,12 +377,14 @@ const originalCartText = "Carrito";
 
 // Función que actualiza los botones según el estado del topbar
 function updateButtonsOnScroll() {
+  const cartCount = document.getElementById("cartCount"); // MOVIDO: Obtener cartCount actual cada vez
+  
   if (topbar.classList.contains("scrolled")) {
     contactBtn.textContent = "📞";
-    cartBtn.innerHTML = `🛒 (<span id="cartCount">${cartCount.textContent}</span>)`;
+    cartBtn.innerHTML = `🛒 (<span id="cartCount">${cartCount ? cartCount.textContent : '0'}</span>)`;
   } else {
     contactBtn.textContent = originalContactText;
-    cartBtn.innerHTML = `${originalCartText} (<span id="cartCount">${cartCount.textContent}</span>)`;
+    cartBtn.innerHTML = `${originalCartText} (<span id="cartCount">${cartCount ? cartCount.textContent : '0'}</span>)`;
   }
 }
 
