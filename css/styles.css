@@ -2,7 +2,7 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #f6f3e3; /* beige claro */
-  color: #3b003b; /* violeta */
+  color: #842660; /* violeta */
 }
 
 /* HEADER */
@@ -11,7 +11,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  background: #e8ba8b; /* amarillo */
+  background: #e7d2b3; /* amarillo */
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   z-index: 1000;
   display: flex;
@@ -46,7 +46,7 @@ body {
 .brand {
   font-weight: bold;
   font-size: 1.2rem;
-  color: #3b003b;
+  color: #842660;
 }
 
 .menu {
@@ -61,7 +61,7 @@ body {
   text-decoration: none;
   color: white;
   font-weight: 500;
-  background: #7b2e7b;
+  background: #842660;
   padding: 6px 12px;
   border-radius: 6px;
   border: none;
@@ -70,7 +70,7 @@ body {
   white-space: nowrap;
 }
 .menu a:hover, .menu button:hover {
-  background: #3b003b;
+  background: #b868b8;
   color: white;
 }
 
@@ -162,14 +162,14 @@ body {
   margin-bottom: 20px;
 }
 .btn-primary {
-  background: #7b2e7b;
+  background: #842660;
   color: white;
   padding: 12px 24px;
   border-radius: 6px;
   text-decoration: none;
 }
 .btn-primary:hover {
-  background: #3b003b;
+  background: #b868b8;
 }
 
 /* SECCIONES INFO */
@@ -179,12 +179,12 @@ body {
 }
 
 .info-container {
-  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 500px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: start;
+  width: 100%;
 }
 
 .info-card {
@@ -203,7 +203,7 @@ body {
 }
 
 .info-card h2 {
-  color: #7b2e7b;
+  color: #842660;
   font-size: 2rem;
   margin-bottom: 25px;
   padding-bottom: 15px;
@@ -217,54 +217,6 @@ body {
   font-size: 1rem;
   margin-bottom: 15px;
   text-align: justify;
-}
-
-/* Sección Consumo específica */
-.consumo-steps {
-  margin-top: 20px;
-}
-
-.step-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  padding: 15px;
-  background: #faf4eb;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-}
-
-.step-item:hover {
-  background: #f5ead8;
-  transform: translateX(10px);
-}
-
-.step-number {
-  background: linear-gradient(135deg, #7b2e7b, #3b003b);
-  color: white;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-right: 20px;
-  flex-shrink: 0;
-}
-
-.step-text {
-  color: #3b003b;
-  line-height: 1.6;
-  flex: 1;
-}
-
-.step-text strong {
-  color: #7b2e7b;
-  display: block;
-  margin-bottom: 5px;
-  font-size: 1.1rem;
 }
 
 /* Iconos decorativos */
@@ -436,7 +388,7 @@ body {
 }
 
 .gallery-nav button:hover {
-  background: #3b003b;
+  background: #842660;
   transform: scale(1.1);
 }
 
@@ -458,18 +410,18 @@ body {
 .gallery-item h3 {
   margin: 15px 10px 10px;
   font-size: 1.1rem;
-  color: #3b003b;
+  color: #842660; /* Color del nombre */
 }
 
 .gallery-item p {
   margin: 0 10px 10px;
   font-weight: bold;
-  color: #7b2e7b;
+  color: #842660;  /* Color del precio */
   font-size: 1.2rem;
 }
 
 .gallery-item button {
-  background: #e8ba8a;
+  background: #e7d2b3;
   border: none;
   padding: 12px;
   cursor: pointer;
@@ -518,7 +470,7 @@ body {
 
 /* FOOTER */
 .footer {
-  background: #7b2e7b;
+  background: #842660;
   color: white;
   text-align: center;
   padding: 20px;
@@ -531,7 +483,7 @@ body {
   text-decoration: none;
 }
 .footer .redes a:hover {
-  background: #3b003b;
+  background: #b868b8;
 }
 
 /* MODALES */
@@ -590,12 +542,12 @@ body {
 }
 
 .cart-modal-body::-webkit-scrollbar-thumb {
-  background: #e8ba8a;
+  background: #e7d2b3;
   border-radius: 10px;
 }
 
 .cart-modal-body::-webkit-scrollbar-thumb:hover {
-  background: #e69d4f;
+  background: #e7d2b3;
 }
 
 .cart-header {
